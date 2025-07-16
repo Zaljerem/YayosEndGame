@@ -19,35 +19,31 @@ public class Building_Teleporter : Building
             yield return gizmo2;
         }
 
-        var command_Action = new Command_Action
+        var commandAction = new Command_Action
         {
-            action = TryLaunch,
+            action = tryLaunch,
             defaultLabel = "yayoEnding_CommandTeleporterLaunch".Translate(),
             defaultDesc = "yayoEnding_CommandTeleporterLaunchDesc".Translate()
         };
 
         var comp = this.TryGetComp<CompHibernatable>();
-        if (comp != null && comp.State == HibernatableStateDefOf.Hibernating)
+        if (comp != null && comp.State == HibernatableStateDefOf.Hibernating || comp is { Running: false })
         {
-            command_Action.Disable("yayoEnding_energyChargeRequired".Translate());
-        }
-        else if (comp is { Running: false })
-        {
-            command_Action.Disable("yayoEnding_energyChargeRequired".Translate());
+            commandAction.Disable("yayoEnding_energyChargeRequired".Translate());
         }
 
 
         if (ShipCountdown.CountingDown)
         {
-            command_Action.Disable();
+            commandAction.Disable();
         }
 
-        command_Action.hotKey = KeyBindingDefOf.Misc1;
-        command_Action.icon = ContentFinder<Texture2D>.Get("UI/Commands/LaunchShip");
-        yield return command_Action;
+        commandAction.hotKey = KeyBindingDefOf.Misc1;
+        commandAction.icon = ContentFinder<Texture2D>.Get("UI/Commands/LaunchShip");
+        yield return commandAction;
     }
 
-    public void ForceLaunch()
+    private void forceLaunch()
     {
         ShipCountdown.InitiateCountdown(this);
         if (Spawned)
@@ -56,8 +52,8 @@ public class Building_Teleporter : Building
         }
     }
 
-    private void TryLaunch()
+    private void tryLaunch()
     {
-        ForceLaunch();
+        forceLaunch();
     }
 }

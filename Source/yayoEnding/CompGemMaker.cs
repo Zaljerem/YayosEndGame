@@ -12,15 +12,7 @@ public class CompGemMaker : ThingComp
     private float portionYieldPct;
     private CompPowerTrader powerComp;
 
-    private ThingDef gemDef
-    {
-        get
-        {
-            var t = ThingDef.Named($"yy_gem_{parent.Map.Biome.defName}");
-
-            return t;
-        }
-    }
+    private ThingDef gemDef => DefDatabase<ThingDef>.GetNamedSilentFail($"yy_gem_{parent.Map.Biome.defName}");
 
     [Obsolete("Use WorkPerPortionBase constant directly.")]
     public static float WorkPerPortionCurrentDifficulty => WorkPerPortionBase;
@@ -41,7 +33,7 @@ public class CompGemMaker : ThingComp
 
     public void DrillWorkDone(Pawn driller)
     {
-        var statValue = driller.GetStatValue(StatDefOf.DeepDrillingSpeed) * core.extractSpeed;
+        var statValue = driller.GetStatValue(StatDefOf.DeepDrillingSpeed) * core.ExtractSpeed;
         portionProgress += statValue;
         portionYieldPct +=
             (float)(statValue * (double)driller.GetStatValue(StatDefOf.MiningYield) / WorkPerPortionBase);
@@ -51,19 +43,19 @@ public class CompGemMaker : ThingComp
             return;
         }
 
-        TryProducePortion();
+        tryProducePortion();
         portionProgress = 0.0f;
         portionYieldPct = 0.0f;
     }
 
-    public override void PostDeSpawn(Map map)
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
     {
         portionProgress = 0.0f;
         portionYieldPct = 0.0f;
         lastUsedTick = -99999;
     }
 
-    private void TryProducePortion()
+    private void tryProducePortion()
     {
         var m = parent.Map;
         var thing = ThingMaker.MakeThing(gemDef);

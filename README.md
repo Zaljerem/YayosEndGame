@@ -1,4 +1,4 @@
-# YayosEndGame
+# [Yayo's EndGame (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2889874629)
 
 ![Image](https://i.imgur.com/buuPQel.png)
 
@@ -6,7 +6,6 @@ Update of Latki, YAYOs mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2260853046
 
 ![Image](https://i.imgur.com/pufA0kM.png)
-
 	
 ![Image](https://i.imgur.com/Z4GOv8H.png)
 
@@ -32,7 +31,6 @@ and leave for a planet called by the unknown who created this teleporter.
 
 
 
-
 # 1. Extract 100 biome energy shards from each of 3 biomes.
 
 - Extracts energy shards from the biome.
@@ -43,9 +41,7 @@ and leave for a planet called by the unknown who created this teleporter.
 ![Image](https://imgur.com/Yl2FaDg.gif)
 
 
-
 ![Image](https://imgur.com/UlUJ0di.png)
-
 
 
 
@@ -59,7 +55,6 @@ and leave for a planet called by the unknown who created this teleporter.
 
 
 
-
 # 3. Build a planet energy teleporter.
 
 - Lights from planetary energy shard explain this device.
@@ -69,7 +64,6 @@ and leave for a planet called by the unknown who created this teleporter.
 
 
 ![Image](https://imgur.com/kMZ9DeK.gif)
-
 
 
 
@@ -117,13 +111,12 @@ If you are proficient in C# and are interested, please contact me on the rimworl
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib or the standalone https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader and command Ctrl+F12
+-  Post your error-log using the [Log Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
--  Use https://github.com/RimSort/RimSort/releases/latest]RimSort to sort your mods
+-  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
+ 
 
-
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2889874629]![Image](https://img.shields.io/github/v/release/emipa606/YayosEndGame?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
-
+[![Image](https://img.shields.io/github/v/release/emipa606/YayosEndGame?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2889874629) | tags:  planet teleportation,  epic journey

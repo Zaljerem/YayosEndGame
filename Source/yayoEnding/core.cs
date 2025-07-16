@@ -10,10 +10,10 @@ namespace yayoEnding;
 
 public class core : ModBase
 {
-    public static readonly List<string> ar_gemDef = [];
-    public static int goalBiome = 2;
-    public static float extractSpeed = 1f;
-    public static bool ignoreExtreme;
+    private static readonly List<string> arGemDef = [];
+    private static int goalBiome = 2;
+    public static float ExtractSpeed = 1f;
+    private static bool ignoreExtreme;
 
     private SettingHandle<float> extractSpeedSetting;
 
@@ -37,7 +37,7 @@ public class core : ModBase
 
         extractSpeedSetting = Settings.GetHandle("extractSpeed", "extractSpeed_title".Translate(),
             "extractSpeed_desc".Translate(), 1f);
-        extractSpeed = extractSpeedSetting.Value;
+        ExtractSpeed = extractSpeedSetting.Value;
 
 
         // 바이옴 에너지 조각 텍스쳐 수정
@@ -61,7 +61,7 @@ public class core : ModBase
     public override void SettingsChanged()
     {
         goalBiome = goalBiomeSetting.Value;
-        extractSpeed = Mathf.Clamp(extractSpeedSetting.Value, 0.01f, 50f);
+        ExtractSpeed = Mathf.Clamp(extractSpeedSetting.Value, 0.01f, 50f);
     }
 
 
@@ -91,13 +91,11 @@ public class core : ModBase
                 pathCost = 14,
                 // detail
                 defName = $"yy_gem_{b.defName}",
-                //t.label = $"{b.label} energy piece";
                 label = string.Format("yayoEnding_energyPiece".Translate(), b.label),
                 description = string.Format("yayoEnding_energyPiece".Translate(), b.label),
                 graphicData = new GraphicData
                 {
                     texPath = "Things/Item/Resource/Gold",
-                    //t.graphicData.texPath = $"yy_bep{a % 15}";
                     graphicClass = typeof(Graphic_StackCount)
                 },
                 soundInteract = SoundDef.Named("Silver_Drop"),
@@ -111,10 +109,6 @@ public class core : ModBase
             t.thingCategories = [];
 
             t.stackLimit = 100;
-            //t.smallVolume = true;
-            //t.deepCommonality = 0f;
-            //t.deepCountPerPortion = 8;
-            //t.deepLumpSizeRange = new IntRange(1, 4);
             t.burnableByRecipe = false;
             t.smeltable = false;
             t.terrainAffordanceNeeded = TerrainAffordanceDefOf.Medium;
@@ -123,17 +117,15 @@ public class core : ModBase
             t.tradeability = Tradeability.None;
             t.tradeTags = ["yy_gem"];
 
-            ar_gemDef.Add(t.defName);
+            arGemDef.Add(t.defName);
             DefGenerator.AddImpliedDef(t);
-
-            //Log.Message($"{b.defName}, {b.label}, {t.label}");
         }
 
         patchDef2();
     }
 
 
-    public static void patchDef2()
+    private static void patchDef2()
     {
         Log.Message("# Yayo's Ending Init 2");
 
@@ -164,9 +156,9 @@ public class core : ModBase
             };
 
             var ingredient = new List<IngredientCount>();
-            while (ingredient.Count < goalBiome && ingredient.Count < ar_gemDef.Count)
+            while (ingredient.Count < goalBiome && ingredient.Count < arGemDef.Count)
             {
-                var td = ThingDef.Named(ar_gemDef[Rand.Range(0, ar_gemDef.Count)]);
+                var td = ThingDef.Named(arGemDef[Rand.Range(0, arGemDef.Count)]);
                 var already = false;
                 foreach (var ingredientCount in ingredient)
                 {
@@ -224,10 +216,15 @@ public class core : ModBase
 
         // 실존하는 바이옴 리스트 생성
         var tmp_ar_gemDef = new List<string>();
-        foreach (var tile in Find.WorldGrid.tiles)
+        foreach (var tile in Find.WorldGrid.Tiles)
         {
-            var gemDefName = $"yy_gem_{tile.biome.defName}";
-            if (tile.biome.canBuildBase && !tmp_ar_gemDef.Contains(gemDefName))
+            var gemDefName = $"yy_gem_{tile.PrimaryBiome.defName}";
+            if (DefDatabase<ThingDef>.GetNamedSilentFail(gemDefName) == null)
+            {
+                continue;
+            }
+
+            if (tile.PrimaryBiome.canBuildBase && !tmp_ar_gemDef.Contains(gemDefName))
             {
                 tmp_ar_gemDef.Add(gemDefName);
             }

@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 1477534993
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f968a108f7ee872fa70f1a415075e21d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: f968a108f7ee872fa70f1a415075e21d
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep10.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_ef0.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep0.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_teleporter.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep13.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep6.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep4.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep1.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep5.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep12.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep14.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep2.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_planetCore.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep7.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_biomeExtractor.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep8.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep9.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep3.png
+- Assets/Data/Mlie.YayosEndGame/Textures/yy_bep11.png
+Dependencies: []

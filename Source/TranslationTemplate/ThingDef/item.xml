@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: biome energy extractor -->
+  <yy_biomeExtractor.label>biome energy extractor</yy_biomeExtractor.label>
+  <!-- EN: Extracts energy shards from the biome.\nDepending on the working biome, the types of biome energy shards generated differ. -->
+  <yy_biomeExtractor.description>Extracts energy shards from the biome.
+Depending on the working biome, the types of biome energy shards generated differ.</yy_biomeExtractor.description>
+  <!-- EN: Mote -->
+  <yy_distortA.label>Mote</yy_distortA.label>
+  <!-- EN: Mote -->
+  <yy_flashA.label>Mote</yy_flashA.label>
+  <!-- EN: Mote -->
+  <yy_flashB.label>Mote</yy_flashB.label>
+  <!-- EN: Mote -->
+  <yy_flashC.label>Mote</yy_flashC.label>
+  <!-- EN: Mote -->
+  <yy_flashD.label>Mote</yy_flashD.label>
+  <!-- EN: planet energy core -->
+  <yy_planetCore.label>planet energy core</yy_planetCore.label>
+  <!-- EN: A key material for building planet energy teleporters.\n    \nTo make this, you need biome energy shard.\n    \nResearch machining and build a biome energy extractor on a specific biome to collect the energy shards you need. -->
+  <yy_planetCore.description>A key material for building planet energy teleporters.
+    
+To make this, you need biome energy shard.
+    
+Research machining and build a biome energy extractor on a specific biome to collect the energy shards you need.</yy_planetCore.description>
+  <!-- EN: planet energy teleporter -->
+  <yy_teleporter.label>planet energy teleporter</yy_teleporter.label>
+  <!-- EN: Lights from planetary energy fragments explain this device.\nWe figured out how to make this device and that it is a device for moving to another planet, but we haven't figured out where this is pointing us.\nThose who made this seem to want us to come to them. -->
+  <yy_teleporter.description>Lights from planetary energy fragments explain this device.
+We figured out how to make this device and that it is a device for moving to another planet, but we haven't figured out where this is pointing us.
+Those who made this seem to want us to come to them.</yy_teleporter.description>
+</LanguageData>

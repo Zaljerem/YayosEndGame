@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <goalBiome_title>biome shard type for goal (restart)</goalBiome_title>
   <goalBiome_desc>(Requires restart)\nSets the number of biome shard type required to build a teleporter.</goalBiome_desc>

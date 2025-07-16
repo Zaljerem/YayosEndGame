@@ -8,14 +8,13 @@ using Verse;
 namespace yayoEnding;
 
 [HarmonyPatch(typeof(ShipCountdown), "CountdownEnded")]
-internal class patch_ShipCountdown_CountdownEnded
+internal class ShipCountdown_CountdownEnded
 {
-    private static readonly FieldInfo f_shipRoot = AccessTools.Field(typeof(ShipCountdown), "shipRoot");
+    private static readonly FieldInfo fShipRoot = AccessTools.Field(typeof(ShipCountdown), "shipRoot");
 
     private static readonly AccessTools.FieldRef<Building> s_shipRoot =
-        AccessTools.StaticFieldRefAccess<Building>(f_shipRoot);
+        AccessTools.StaticFieldRefAccess<Building>(fShipRoot);
 
-    [HarmonyPostfix]
     private static bool Prefix()
     {
         var shipRoot = s_shipRoot.Invoke();
