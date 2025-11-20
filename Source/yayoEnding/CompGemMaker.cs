@@ -1,5 +1,7 @@
-﻿using System;
-using RimWorld;
+﻿using RimWorld;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace yayoEnding;
@@ -33,7 +35,7 @@ public class CompGemMaker : ThingComp
 
     public void DrillWorkDone(Pawn driller)
     {
-        var statValue = driller.GetStatValue(StatDefOf.DeepDrillingSpeed) * core.ExtractSpeed;
+        var statValue = driller.GetStatValue(StatDefOf.DeepDrillingSpeed) * YayoEndingMod.ExtractSpeed;
         portionProgress += statValue;
         portionYieldPct +=
             (float)(statValue * (double)driller.GetStatValue(StatDefOf.MiningYield) / WorkPerPortionBase);
@@ -83,4 +85,32 @@ public class CompGemMaker : ThingComp
         return "yayoEnding_resource".Translate() + ": " + gemDef.label + "\n" + "ProgressToNextPortion".Translate() +
                ": " + ProgressToNextPortionPercent.ToStringPercent("F0");
     }
+
+    public override IEnumerable<Gizmo> CompGetGizmosExtra()
+    {
+        
+        if (DebugSettings.godMode)
+        {
+            yield return new Command_Action
+            {
+                defaultLabel = "God Mode: Complete Extraction",
+                defaultDesc = "Instantly completes the current gem extraction cycle.",
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/DesirePower"), // any icon works
+                action = () =>
+                {
+                    portionProgress = WorkPerPortionBase;
+                    portionYieldPct = 1f;
+
+                    tryProducePortion();
+
+                    portionProgress = 0f;
+                    portionYieldPct = 0f;
+
+                    Messages.Message("Extraction completed (God Mode).", parent, MessageTypeDefOf.TaskCompletion);
+                }
+            };
+        }
+    }
+
+
 }
