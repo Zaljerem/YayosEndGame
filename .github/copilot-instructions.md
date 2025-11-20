@@ -1,55 +1,55 @@
-# Copilot Instructions for RimWorld Modding Project
+# GitHub Copilot Instructions for Yayo's EndGame (Continued) Mod Project
 
 ## Mod Overview and Purpose
 
-This RimWorld mod enhances gameplay by introducing new building mechanics and in-game features. The core purpose of the mod is to provide players with additional layers of interaction and challenges by integrating teleportation technology and gem crafting capabilities.
+**Mod Name:** Yayo's EndGame (Continued)
+
+Yayo's EndGame (Continued) is an update of Latki, YAYO's original mod designed to introduce a new ending to RimWorld. The mod provides a story-driven reason for players to embark on an epic journey across multiple biomes, enriching the gaming experience by requiring players to travel and gather resources across diverse environments. Players extract biome energy shards, craft a planet energy core, and finally build a planet energy teleporter to reach the unknown instigators of this interstellar saga.
 
 ## Key Features and Systems
 
-1. **Teleportation System:**
-   - Implemented using the `Building_Teleporter` class, which provides mechanics for fast travel and efficient logistics.
-   - Key Methods:
-     - `ForceLaunch()`: Instantly initiates teleportation.
-     - `TryLaunch()`: Handles the logic of launching if conditions are met.
+1. **Energy Shard Extraction:**
+   - Players extract 100 biome energy shards from three different biomes. The type of shard depends on the biome and the number of biomes can be modified via settings.
 
-2. **Gem Crafting System:**
-   - Managed through `CompGemMaker` and `CompProperties_GemMaker` classes, allowing players to craft and utilize gems.
-   - Key Methods in `CompGemMaker`:
-     - `DrillWorkDone(Pawn driller)`: Triggers when a pawn completes a drilling task.
-     - `TryProducePortion()`: Handles the production of gem portions based on defined criteria.
-     - `CanDrillNow()`: Checks whether drilling operations can commence.
-     - `UsedLastTick()`: Checks if the drill was operational in the last game tick.
+2. **Crafting the Planet Energy Core:**
+   - The core is a critical piece for building energy teleporters. Its creation requires biome energy shards, with the specific types of shards required being randomly determined.
+
+3. **Constructing the Planet Energy Teleporter:**
+   - An important goal of the mod is to build this teleporter, a mysterious device powered by energy shards, capable of transporting users to an unknown destination.
+
+4. **15-Day Raid Defense:**
+   - Following the teleporter's completion, players must endure a 15-day raid defense sequence before making their escape and triggering a new ending.
+
+5. **New Ending:**
+   - Provides a fresh concluding narrative for players who complete the journey.
 
 ## Coding Patterns and Conventions
 
-- **Class Naming:** Classes follow a naming convention that reflects their functionality, such as `Building_Teleporter` for teleportation and `CompGemMaker` for component-based gem crafting.
-- **Method Visibility:** Most methods are kept private unless they are meant to be directly accessed or overridden, ensuring encapsulation and proper API exposure.
-- **Static Classes:** Used for defining job and thing definitions (`JobDefOf`, `ThingDefOf`) for ease of access and centralized management.
+- The project uses C# coding conventions typical of RimWorld modding, focusing on clarity and maintainability. Classes are well-named to reflect their purpose and functionality.
+- Method names clearly express their intended actions, like `forceLaunch`, `tryLaunch`, `DrillWorkDone`, and `UpdateGraphics`.
+- Consistent use of access levels helps maintain encapsulation, especially using `public`, `private`, and `internal`.
 
 ## XML Integration
 
-Although not detailed in your summary, XML is typically used in RimWorld modding for defining game data like items, buildings, and recipes. Ensure that:
-- XML files are well-structured to define new items, recipes, and jobs.
-- Def names in the XML are referenced correctly in the C# code for seamless integration.
+- XML is predominantly utilized for defining in-game elements, settings, and configurations. It's advisable to refer to existing XML files in the RimWorld mod directory for schema examples.
+- Use XML attributes for mod settings and game definitions, ensuring changes are reflected in-game.
 
 ## Harmony Patching
 
-Harmony is extensively used in this mod for altering the base game behavior:
-
-- **Patch Definitions:**
-  - `harmonyPatch`: Base class for initializing patches.
-  - `Patch_DefGenerator_GenerateImpliedDefs_PreResolve`: Alters the game's definition generation logic before resolution.
-  - `patch_ShipCountdown_CountdownEnded`: Modifies the end behavior of the ship countdown.
-  - `patch_ThingFilter_SetFromPreset`: Changes how thing filters are established from presets.
-
-- **Internal vs Public:**
-  - Internal patches (`patch_ThingFilter_SetFromPreset`) are typically less exposed unless they're part of a larger public API.
+- **Harmony**: The mod uses Harmony for runtime method patching to extend or modify the game's existing behavior.
+- Example patches include `patch_ThingFilter_SetFromPreset` to modify filter settings and `ShipCountdown_CountdownEnded` to re-define the conditions when a ship countdown ends.
+- For new patches, ensure proper `Prefix`, `Postfix`, or `Transpiler` usage according to desired alterations.
 
 ## Suggestions for Copilot
 
-- **Autocomplete for Methods:** Focus on suggesting method signatures and inline comments to explain parameter roles and method purposes.
-- **Harmony Patch Templates:** Generate templates for new Harmony patches with `Prefix`, `Postfix`, and `Transpiler` methods where applicable.
-- **XML Handling:** Enhance suggestions for creating well-formed XML snippets for item and building definitions.
-- **Debugging Helpers:** Offer snippets for basic logging and debugging, particularly within Harmony patches to inspect pre- and post-patch behaviors.
+- **Biomes and Shards**: Suggest exploration of alternative biome types or configurations that affect the types and amounts of energy shards generated.
+- **Plan Escape Scenarios**: Consider suggesting variations on the escape sequence, such as different raid types or additional end-game challenges.
+- **XML File Suggestions**: Help create or refine XML definitions that integrate directly with the mod’s features, especially new game settings or item definitions.
+- **Functionality Extensions**: Suggest ways to extend or enhance existing `Comp` classes like `CompGemMaker`, possibly for additional gameplay mechanics or interactive elements.
+- **Testing Scenarios**: Generate unit test templates to ensure robustness of the components like `Building_Teleporter` or `CompGemMaker`.
 
-By following these instructions, you can effectively leverage GitHub Copilot to streamline your development process, maintain clean code, and ensure seamless interaction with RimWorld's mechanics.
+The mod encourages community contributions and variations, emphasizing flexibility and creativity in extending its base features. Developers proficient in C# are invited to explore and expand the mod's potential.
+
+--- 
+
+Use the provided contact information for direct support and development discussions, especially via dedicated RimWorld Discord channels.

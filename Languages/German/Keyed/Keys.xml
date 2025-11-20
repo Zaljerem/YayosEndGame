@@ -16,4 +16,5 @@
   <yayoEnding_energyCore_recipe_jobstring>Herstellung {0}</yayoEnding_energyCore_recipe_jobstring>
   <yayoEnding_ExcludeExtreme>Extreme Biome ignorieren (Neustart)</yayoEnding_ExcludeExtreme>
   <yayoEnding_ExcludeExtremeTT>(Erfordert einen Neustart)\nWird bei der Auswahl von Biomen für die Scherbenextraktion ignoriert</yayoEnding_ExcludeExtremeTT>
+  <yayoEnding_ModName>Yayo's EndGame</yayoEnding_ModName>
 </LanguageData>

@@ -5,16 +5,13 @@ using Verse;
 namespace yayoEnding;
 
 [HarmonyPatch(typeof(ThingFilter), nameof(ThingFilter.SetFromPreset))]
-internal class patch_ThingFilter_SetFromPreset
+internal class ThingFilter_SetFromPreset
 {
-    [HarmonyPostfix]
-    private static bool Prefix(ThingFilter __instance, StorageSettingsPreset preset)
+    private static void Postfix(ThingFilter __instance, StorageSettingsPreset preset)
     {
-        if (preset == StorageSettingsPreset.DefaultStockpile)
+        if(preset == StorageSettingsPreset.DefaultStockpile)
         {
             __instance.SetAllow(ThingCategoryDef.Named("yy_gem_category"), true);
         }
-
-        return true;
     }
 }

@@ -9,12 +9,12 @@ public class Building_Teleporter : Building
 {
     public override IEnumerable<Gizmo> GetGizmos()
     {
-        foreach (var gizmo in base.GetGizmos())
+        foreach(var gizmo in base.GetGizmos())
         {
             yield return gizmo;
         }
 
-        foreach (var gizmo2 in ShipUtility.ShipStartupGizmos(this))
+        foreach(var gizmo2 in ShipUtility.ShipStartupGizmos(this))
         {
             yield return gizmo2;
         }
@@ -27,13 +27,13 @@ public class Building_Teleporter : Building
         };
 
         var comp = this.TryGetComp<CompHibernatable>();
-        if (comp != null && comp.State == HibernatableStateDefOf.Hibernating || comp is { Running: false })
+        if(comp != null && comp.State == HibernatableStateDefOf.Hibernating || comp is { Running: false })
         {
             commandAction.Disable("yayoEnding_energyChargeRequired".Translate());
         }
 
 
-        if (ShipCountdown.CountingDown)
+        if(ShipCountdown.CountingDown)
         {
             commandAction.Disable();
         }
@@ -46,14 +46,11 @@ public class Building_Teleporter : Building
     private void forceLaunch()
     {
         ShipCountdown.InitiateCountdown(this);
-        if (Spawned)
+        if(Spawned)
         {
             QuestUtility.SendQuestTargetSignals(Map.Parent.questTags, "LaunchedShip");
         }
     }
 
-    private void tryLaunch()
-    {
-        forceLaunch();
-    }
+    private void tryLaunch() { forceLaunch(); }
 }

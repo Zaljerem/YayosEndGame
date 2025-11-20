@@ -21,10 +21,7 @@ public class CompGemMaker : ThingComp
 
     public float ProgressToNextPortionPercent => portionProgress / WorkPerPortionBase;
 
-    public override void PostSpawnSetup(bool respawningAfterLoad)
-    {
-        powerComp = parent.TryGetComp<CompPowerTrader>();
-    }
+    public override void PostSpawnSetup(bool respawningAfterLoad) { powerComp = parent.TryGetComp<CompPowerTrader>(); }
 
     public override void PostExposeData()
     {
@@ -40,7 +37,7 @@ public class CompGemMaker : ThingComp
         portionYieldPct +=
             (float)(statValue * (double)driller.GetStatValue(StatDefOf.MiningYield) / WorkPerPortionBase);
         lastUsedTick = Find.TickManager.TicksGame;
-        if ((double)portionProgress <= WorkPerPortionBase)
+        if((double)portionProgress <= WorkPerPortionBase)
         {
             return;
         }
@@ -65,52 +62,49 @@ public class CompGemMaker : ThingComp
         GenPlace.TryPlaceThing(thing, parent.InteractionCell, m, ThingPlaceMode.Near);
     }
 
-    public bool CanDrillNow()
-    {
-        return powerComp is not { PowerOn: false };
-    }
+    public bool CanDrillNow() { return powerComp is not { PowerOn: false }; }
 
-    public bool UsedLastTick()
-    {
-        return lastUsedTick >= Find.TickManager.TicksGame - 1;
-    }
+    public bool UsedLastTick() { return lastUsedTick >= Find.TickManager.TicksGame - 1; }
 
     public override string CompInspectStringExtra()
     {
-        if (!parent.Spawned)
+        if(!parent.Spawned)
         {
             return null;
         }
 
-        return "yayoEnding_resource".Translate() + ": " + gemDef.label + "\n" + "ProgressToNextPortion".Translate() +
-               ": " + ProgressToNextPortionPercent.ToStringPercent("F0");
+        return "yayoEnding_resource".Translate() +
+            ": " +
+            gemDef.label +
+            "\n" +
+            "ProgressToNextPortion".Translate() +
+            ": " +
+            ProgressToNextPortionPercent.ToStringPercent("F0");
     }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
-        
-        if (DebugSettings.godMode)
+        if(DebugSettings.godMode)
         {
             yield return new Command_Action
             {
                 defaultLabel = "God Mode: Complete Extraction",
                 defaultDesc = "Instantly completes the current gem extraction cycle.",
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/DesirePower"), // any icon works
-                action = () =>
-                {
-                    portionProgress = WorkPerPortionBase;
-                    portionYieldPct = 1f;
+                action =
+                    () =>
+                    {
+                        portionProgress = WorkPerPortionBase;
+                        portionYieldPct = 1f;
 
-                    tryProducePortion();
+                        tryProducePortion();
 
-                    portionProgress = 0f;
-                    portionYieldPct = 0f;
+                        portionProgress = 0f;
+                        portionYieldPct = 0f;
 
-                    Messages.Message("Extraction completed (God Mode).", parent, MessageTypeDefOf.TaskCompletion);
-                }
+                        Messages.Message("Extraction completed (God Mode).", parent, MessageTypeDefOf.TaskCompletion);
+                    }
             };
         }
     }
-
-
 }

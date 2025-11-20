@@ -16,4 +16,5 @@
   <yayoEnding_energyCore_recipe_jobstring>Делаем {0}</yayoEnding_energyCore_recipe_jobstring>
   <yayoEnding_ExcludeExtreme>Игнорировать экстремальные биомы (перезапуск)</yayoEnding_ExcludeExtreme>
   <yayoEnding_ExcludeExtremeTT>(Требуется перезагрузка)\nПри выборе биомов для добычи осколков будут игнорироваться экстремальные биомы</yayoEnding_ExcludeExtremeTT>
+  <yayoEnding_ModName>Yayo's EndGame</yayoEnding_ModName>
 </LanguageData>

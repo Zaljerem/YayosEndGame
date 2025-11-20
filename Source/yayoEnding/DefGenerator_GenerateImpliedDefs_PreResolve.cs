@@ -7,19 +7,13 @@ namespace yayoEnding;
 [HarmonyPatch(typeof(DefGenerator), nameof(DefGenerator.GenerateImpliedDefs_PreResolve))]
 public class DefGenerator_GenerateImpliedDefs_PreResolve
 {
-    public static bool Prefix(bool hotReload)
+    public static void Prefix(bool hotReload)
     {
-        if (YayoEndingMod.DebugLogging)
-        {
-            Log.Message("[YayoEnding] :: Generating Defs");
-        }
-        YayoEndingMod.Instance.PatchDef();
-        if (YayoEndingMod.DebugLogging)
-        {
-            Log.Message("[YayoEnding] :: Applying Graphics");
-        }
-        YayoEndingMod.Instance.UpdateGraphics();
+        YayoEndingMod.DebugLogging("[YayoEnding] :: Generating Defs");
 
-        return true;
+        YayoEndingMod.Instance.PatchDef();
+        YayoEndingMod.DebugLogging("[YayoEnding] :: Applying Graphics");
+
+        YayoEndingMod.Instance.UpdateGraphics();
     }
 }

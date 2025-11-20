@@ -15,11 +15,11 @@ internal class ShipCountdown_CountdownEnded
     private static readonly AccessTools.FieldRef<Building> s_shipRoot =
         AccessTools.StaticFieldRefAccess<Building>(fShipRoot);
 
-    private static bool Prefix()
+    public static bool Prefix()
     {
         var shipRoot = s_shipRoot.Invoke();
 
-        if (shipRoot == null || shipRoot.def.defName != "yy_teleporter")
+        if(shipRoot == null || shipRoot.def.defName != "yy_teleporter")
         {
             return true;
         }
@@ -28,7 +28,7 @@ internal class ShipCountdown_CountdownEnded
         var list2 = new List<Pawn>();
         list.Add(shipRoot);
         var stringBuilder = new StringBuilder();
-        foreach (var p in shipRoot.Map.mapPawns.FreeColonists)
+        foreach(var p in shipRoot.Map.mapPawns.FreeColonists)
         {
             stringBuilder.AppendLine($"   {p.LabelCap}");
             ++Find.StoryWatcher.statsRecord.colonistsLaunched;
@@ -36,15 +36,18 @@ internal class ShipCountdown_CountdownEnded
             list2.Add(p);
         }
 
-        foreach (var p in list2)
+        foreach(var p in list2)
         {
             p.Destroy();
         }
 
         GameVictoryUtility.ShowCredits(
-            GameVictoryUtility.MakeEndCredits("yayoEnding_intro".Translate(), "yayoEnding_ending".Translate(),
-                stringBuilder.ToString()), SongDefOf.EndCreditsSong);
-        foreach (var thing in list)
+            GameVictoryUtility.MakeEndCredits(
+                "yayoEnding_intro".Translate(),
+                "yayoEnding_ending".Translate(),
+                stringBuilder.ToString()),
+            SongDefOf.EndCreditsSong);
+        foreach(var thing in list)
         {
             thing.Destroy();
         }

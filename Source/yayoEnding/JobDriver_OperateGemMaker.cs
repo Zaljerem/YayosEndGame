@@ -8,9 +8,7 @@ namespace yayoEnding;
 public class JobDriver_OperateGemMaker : JobDriver
 {
     public override bool TryMakePreToilReservations(bool errorOnFailed)
-    {
-        return pawn.Reserve(job.targetA, job, errorOnFailed: errorOnFailed);
-    }
+    { return pawn.Reserve(job.targetA, job, errorOnFailed: errorOnFailed); }
 
     protected override IEnumerable<Toil> MakeNewToils()
     {

@@ -16,4 +16,5 @@
   <yayoEnding_energyCore_recipe_jobstring>使得{0}</yayoEnding_energyCore_recipe_jobstring>
   <yayoEnding_ExcludeExtreme>忽略极端生物群落（重启）。</yayoEnding_ExcludeExtreme>
   <yayoEnding_ExcludeExtremeTT>(需要重新启动）在选择提取碎片的生物群落时，将忽略极端生物群落。</yayoEnding_ExcludeExtremeTT>
+  <yayoEnding_ModName>Yayo's EndGame</yayoEnding_ModName>
 </LanguageData>

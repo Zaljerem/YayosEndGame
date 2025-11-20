@@ -1,13 +1,13 @@
 # [Yayo's EndGame (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2889874629)
 
-![Image](https://i.postimg.cc/1X4HT06h/Info.png)
+![Image](https://img.litet.net/logos/Info.png)
 
 Update of Latki, YAYOs mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2260853046
 
-![Image](https://i.postimg.cc/8csH3dWV/Notice.png)
+![Image](https://img.litet.net/logos/Notice.png)
 	
-![Image](https://i.postimg.cc/hvhrw8xB/Original-Description.png)
+![Image](https://img.litet.net/logos/OriginalDescription.png)
 
 # *** Add a new ending**
 
@@ -25,7 +25,7 @@ We will settle for several years in each of the 3 biomes in rimworld, extract bi
 and leave for a planet called by the unknown who created this teleporter.
 
 
-![Image](https://i.postimg.cc/bY7pt7xB/Q1Ziva2.gif)
+![Image](https://img.litet.net/Q1Ziva2.gif)
 
 
 
@@ -38,10 +38,10 @@ and leave for a planet called by the unknown who created this teleporter.
 - So you have to travel through 3 biomes. (number can be modified in options.)
 
 
-![Image](https://i.postimg.cc/BZr4KrTc/Yl2FaDg.gif)
+![Image](https://img.litet.net/Yl2FaDg.gif)
 
 
-![Image](https://i.postimg.cc/xjwnzwvG/UlUJ0di.png)
+![Image](https://img.litet.net/UlUJ0di.png)
 
 
 
@@ -51,7 +51,7 @@ and leave for a planet called by the unknown who created this teleporter.
 - 3 types of biome shard required is randomly determined.
 
 
-![Image](https://i.postimg.cc/Kc6xM67X/9xgmynT.png)
+![Image](https://img.litet.net/9xgmynT.png)
 
 
 
@@ -63,7 +63,7 @@ and leave for a planet called by the unknown who created this teleporter.
   Those who made this seem to want us to come to them.
 
 
-![Image](https://i.postimg.cc/NG3BH38Y/kMZ9DeK.gif)
+![Image](https://img.litet.net/kMZ9DeK.gif)
 
 
 
@@ -105,7 +105,7 @@ I'd love to see variations come out with various ideas.
 I'm a game designer, and I haven't implemented many ideas yet due to lack of time.
 If you are proficient in C# and are interested, please contact me on the rimworld discord.**
 	
-![Image](https://i.postimg.cc/x8qR7GH9/Reporting-Issues.png)
+![Image](https://img.litet.net/logos/ReportingIssues.png)
 
 
 
