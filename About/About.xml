@@ -29,24 +29,24 @@
     <li>brrainz.harmony</li>
     <li>UnlimitedHugs.HugsLib</li>
   </loadAfter>
-  <description>[img]https://i.postimg.cc/1X4HT06h/Info.png[/img]
+  <description>[img]https://img.litet.net/logos/Info.png[/img]
 Update of Latki, YAYOs mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2260853046
 
-[img]https://i.postimg.cc/8csH3dWV/Notice.png[/img]
+[img]https://img.litet.net/logos/Notice.png[/img]
 
 [table]
     [tr]
-        [td][url=https://discord.gg/h5TY6DA][img]https://i.postimg.cc/T1h9SjbF/Discord.png[/img][/url][/td]
-        [td][url=https://github.com/emipa606/YayosEndGame][img]https://i.postimg.cc/fykKF7X4/Github.png[/img][/url][/td]
+        [td][url=https://discord.gg/h5TY6DA][img]https://img.litet.net/logos/Discord.png[/img][/url][/td]
+        [td][url=https://github.com/emipa606/YayosEndGame][img]https://img.litet.net/logos/Github.png[/img][/url][/td]
     [/tr]
     [tr]
-        [td][img]https://i.postimg.cc/MHXD40RW/Safe-To-Add.png[/img][/td]
-        [td][img]https://i.postimg.cc/6qS0N7L6/Unsafe-To-Remove.png[/img][/td]
+        [td][img]https://img.litet.net/logos/SafeToAdd.png[/img][/td]
+        [td][img]https://img.litet.net/logos/UnsafeToRemove.png[/img][/td]
     [/tr]
 [/table]
 	
-[img]https://i.postimg.cc/hvhrw8xB/Original-Description.png[/img]
+[img]https://img.litet.net/logos/OriginalDescription.png[/img]
 [h1][b]* Add a new ending[/b][/h1]
 
 
@@ -60,7 +60,7 @@ This story is a long epic.
 We will settle for several years in each of the 3 biomes in rimworld, extract biome energy, 
 and leave for a planet called by the unknown who created this teleporter.
 
-[list][img]https://i.postimg.cc/bY7pt7xB/Q1Ziva2.gif[/img][/list]
+[list][img]https://img.litet.net/Q1Ziva2.gif[/img][/list]
 
 
 
@@ -70,15 +70,15 @@ and leave for a planet called by the unknown who created this teleporter.
   Depending on the working biome, the types of biome energy shards generated differ.
 - So you have to travel through 3 biomes. (number can be modified in options.)
 
-[list][img]https://i.postimg.cc/BZr4KrTc/Yl2FaDg.gif[/img][/list]
-[list][img]https://i.postimg.cc/xjwnzwvG/UlUJ0di.png[/img][/list]
+[list][img]https://img.litet.net/Yl2FaDg.gif[/img][/list]
+[list][img]https://img.litet.net/UlUJ0di.png[/img][/list]
 
 
 [h1]2. Make a planet energy core.[/h1]
 - A key material for building planet energy teleporters. To make this, you need biome energy shard.
 - 3 types of biome shard required is randomly determined.
 
-[list][img]https://i.postimg.cc/Kc6xM67X/9xgmynT.png[/img][/list]
+[list][img]https://img.litet.net/9xgmynT.png[/img][/list]
 
 
 [h1]3. Build a planet energy teleporter.[/h1]
@@ -87,7 +87,7 @@ and leave for a planet called by the unknown who created this teleporter.
   but we haven't figured out where this is pointing us.
   Those who made this seem to want us to come to them.
 
-[list][img]https://i.postimg.cc/NG3BH38Y/kMZ9DeK.gif[/img][/list]
+[list][img]https://img.litet.net/kMZ9DeK.gif[/img][/list]
 
 
 [h1]4. 15-day raid defense.[/h1]
@@ -123,7 +123,7 @@ I'd love to see variations come out with various ideas.
 I'm a game designer, and I haven't implemented many ideas yet due to lack of time.
 If you are proficient in C# and are interested, please contact me on the rimworld discord.[/b]
 	
-[img]https://i.postimg.cc/x8qR7GH9/Reporting-Issues.png[/img]
+[img]https://img.litet.net/logos/ReportingIssues.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
@@ -134,6 +134,7 @@ If you are proficient in C# and are interested, please contact me on the rimworl
 [*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
 [/list] 
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2889874629][img]https://img.shields.io/github/v/release/emipa606/YayosEndGame?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | tags:  planet teleportation,  epic journey</description>
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2889874629][img]https://img.shields.io/github/v/release/emipa606/YayosEndGame?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | tags:  planet teleportation,  epic journey
+</description>
   <modVersion IgnoreIfNoMatchingField="True">1.6.1</modVersion>
 </ModMetaData>
