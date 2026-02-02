@@ -30,14 +30,13 @@ public class CompGemMaker : ThingComp
         Scribe_Values.Look(ref lastUsedTick, "lastUsedTick");
     }
 
-    public void DrillWorkDone(Pawn driller)
+    public void DrillWorkDone(Pawn driller, int delta)
     {
-        var statValue = driller.GetStatValue(StatDefOf.DeepDrillingSpeed) * YayoEndingMod.ExtractSpeed;
+        var statValue = driller.GetStatValue(StatDefOf.DeepDrillingSpeed) * YayoEndingMod.ExtractSpeed * delta;
         portionProgress += statValue;
-        portionYieldPct +=
-            (float)(statValue * (double)driller.GetStatValue(StatDefOf.MiningYield) / WorkPerPortionBase);
+        portionYieldPct += statValue * driller.GetStatValue(StatDefOf.MiningYield) / WorkPerPortionBase;
         lastUsedTick = Find.TickManager.TicksGame;
-        if((double)portionProgress <= WorkPerPortionBase)
+        if(portionProgress <= WorkPerPortionBase)
         {
             return;
         }

@@ -19,11 +19,11 @@ public class JobDriver_OperateGemMaker : JobDriver
         operateGemMaker.FailOn(() => !job.targetA.Thing.TryGetComp<CompGemMaker>().CanDrillNow());
         yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
         var work = new Toil();
-        work.tickAction = () =>
+        work.tickIntervalAction = delta =>
         {
             var actor = work.actor;
-            ((ThingWithComps)actor.CurJob.targetA.Thing).GetComp<CompGemMaker>().DrillWorkDone(actor);
-            actor.skills.Learn(SkillDefOf.Mining, 0.065f);
+            ((ThingWithComps)actor.CurJob.targetA.Thing).GetComp<CompGemMaker>().DrillWorkDone(actor, delta);
+            actor.skills?.Learn(SkillDefOf.Mining, 0.065f * delta);
         };
         work.defaultCompleteMode = ToilCompleteMode.Never;
         work.WithEffect(EffecterDefOf.DisabledByEMP, TargetIndex.A);
