@@ -23,7 +23,7 @@ public class JobDriver_OperateGemMaker : JobDriver
         {
             var actor = work.actor;
             ((ThingWithComps)actor.CurJob.targetA.Thing).GetComp<CompGemMaker>().DrillWorkDone(actor);
-            actor.skills.Learn(SkillDefOf.Mining, 0.065f);
+            actor.skills?.Learn(SkillDefOf.Mining, 0.065f);
         };
         work.defaultCompleteMode = ToilCompleteMode.Never;
         work.WithEffect(EffecterDefOf.DisabledByEMP, TargetIndex.A);
