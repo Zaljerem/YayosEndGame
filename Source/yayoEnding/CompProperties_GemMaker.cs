@@ -4,5 +4,8 @@ namespace yayoEnding;
 
 public class CompProperties_GemMaker : CompProperties
 {
-    public CompProperties_GemMaker() { compClass = typeof(CompGemMaker); }
+    public CompProperties_GemMaker()
+    {
+        compClass = typeof(CompGemMaker);
+    }
 }

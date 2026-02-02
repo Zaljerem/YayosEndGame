@@ -1,6 +1,6 @@
-﻿using RimWorld;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -19,9 +19,12 @@ public class CompGemMaker : ThingComp
     [Obsolete("Use WorkPerPortionBase constant directly.")]
     public static float WorkPerPortionCurrentDifficulty => WorkPerPortionBase;
 
-    public float ProgressToNextPortionPercent => portionProgress / WorkPerPortionBase;
+    private float ProgressToNextPortionPercent => portionProgress / WorkPerPortionBase;
 
-    public override void PostSpawnSetup(bool respawningAfterLoad) { powerComp = parent.TryGetComp<CompPowerTrader>(); }
+    public override void PostSpawnSetup(bool respawningAfterLoad)
+    {
+        powerComp = parent.TryGetComp<CompPowerTrader>();
+    }
 
     public override void PostExposeData()
     {
@@ -36,7 +39,7 @@ public class CompGemMaker : ThingComp
         portionProgress += statValue;
         portionYieldPct += statValue * driller.GetStatValue(StatDefOf.MiningYield) / WorkPerPortionBase;
         lastUsedTick = Find.TickManager.TicksGame;
-        if(portionProgress <= WorkPerPortionBase)
+        if (portionProgress <= WorkPerPortionBase)
         {
             return;
         }
@@ -61,29 +64,35 @@ public class CompGemMaker : ThingComp
         GenPlace.TryPlaceThing(thing, parent.InteractionCell, m, ThingPlaceMode.Near);
     }
 
-    public bool CanDrillNow() { return powerComp is not { PowerOn: false }; }
+    public bool CanDrillNow()
+    {
+        return powerComp is not { PowerOn: false };
+    }
 
-    public bool UsedLastTick() { return lastUsedTick >= Find.TickManager.TicksGame - 1; }
+    public bool UsedLastTick()
+    {
+        return lastUsedTick >= Find.TickManager.TicksGame - 1;
+    }
 
     public override string CompInspectStringExtra()
     {
-        if(!parent.Spawned)
+        if (!parent.Spawned)
         {
             return null;
         }
 
         return "yayoEnding_resource".Translate() +
-            ": " +
-            gemDef.label +
-            "\n" +
-            "ProgressToNextPortion".Translate() +
-            ": " +
-            ProgressToNextPortionPercent.ToStringPercent("F0");
+               ": " +
+               gemDef.label +
+               "\n" +
+               "ProgressToNextPortion".Translate() +
+               ": " +
+               ProgressToNextPortionPercent.ToStringPercent("F0");
     }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
-        if(DebugSettings.godMode)
+        if (DebugSettings.godMode)
         {
             yield return new Command_Action
             {

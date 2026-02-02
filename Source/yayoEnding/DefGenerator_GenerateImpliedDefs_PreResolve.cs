@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using RimWorld;
-using Verse;
 
 namespace yayoEnding;
 
@@ -11,9 +10,9 @@ public class DefGenerator_GenerateImpliedDefs_PreResolve
     {
         YayoEndingMod.DebugLogging("[YayoEnding] :: Generating Defs");
 
-        YayoEndingMod.Instance.PatchDef();
+        YayoEndingMod.PatchDef();
         YayoEndingMod.DebugLogging("[YayoEnding] :: Applying Graphics");
 
-        YayoEndingMod.Instance.UpdateGraphics();
+        YayoEndingMod.UpdateGraphics();
     }
 }

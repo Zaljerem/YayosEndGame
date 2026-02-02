@@ -8,5 +8,8 @@ public static class JobDefOf
 {
     public static JobDef OperateGemMaker;
 
-    static JobDefOf() { DefOfHelper.EnsureInitializedInCtor(typeof(JobDefOf)); }
+    static JobDefOf()
+    {
+        DefOfHelper.EnsureInitializedInCtor(typeof(JobDefOf));
+    }
 }

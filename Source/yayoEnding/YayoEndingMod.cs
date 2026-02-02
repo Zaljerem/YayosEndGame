@@ -1,10 +1,10 @@
-﻿using HarmonyLib;
-using RimWorld;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using HarmonyLib;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -12,21 +12,21 @@ namespace yayoEnding;
 
 public class YayoEndingMod : Mod
 {
-    public static readonly List<string> arGemDef = new List<string>();
+    private static readonly List<string> arGemDef = [];
 
 
     //added blacklist for biomes ... could be expanded into a mod setting
     //but this works for now
-    public static readonly HashSet<string> BlacklistedBiomeNames = new();
+    private static readonly HashSet<string> BlacklistedBiomeNames = [];
     public static float ExtractSpeed = 1f;
     public static int goalBiome = 2;
-    public static bool ignoreExtreme = false;
+    private static bool ignoreExtreme;
 
-    public static YayoEndingMod Instance;
+    private static YayoEndingMod Instance;
+
+    private readonly YayoEndingSettings settings;
 
     private string goalBiomeBuffer;
-
-    public YayoEndingSettings settings;
 
     public YayoEndingMod(ModContentPack content) : base(content)
     {
@@ -38,7 +38,7 @@ public class YayoEndingMod : Mod
         // apply persisted settings into static fields
         ApplySettingsToStatics();
 
-        YayoEndingMod.DebugLogging("[YayoEnding] :: Harmony patching");
+        DebugLogging("[YayoEnding] :: Harmony patching");
 
         new Harmony("yayoEnding").PatchAll();
 
@@ -66,19 +66,21 @@ public class YayoEndingMod : Mod
         {
             if (modSetting.Name == "goalBiome")
             {
-                YayoEndingMod.Instance.settings.goalBiome = int.Parse(modSetting.Value);
+                Instance.settings.goalBiome = int.Parse(modSetting.Value);
             }
+
             if (modSetting.Name == "ignoreExtreme")
             {
-                YayoEndingMod.Instance.settings.ignoreExtreme = bool.Parse(modSetting.Value);
+                Instance.settings.ignoreExtreme = bool.Parse(modSetting.Value);
             }
+
             if (modSetting.Name == "extractSpeed")
             {
-                YayoEndingMod.Instance.settings.extractSpeed = float.Parse(modSetting.Value);
+                Instance.settings.extractSpeed = float.Parse(modSetting.Value);
             }
         }
 
-        YayoEndingMod.Instance.settings.Write();
+        Instance.settings.Write();
         xml.Root.Element(modNodeName)?.Remove();
         xml.Save(hugsLibConfig);
 
@@ -93,7 +95,7 @@ public class YayoEndingMod : Mod
     }
 
 
-    private void PatchDef2()
+    private static void PatchDef2()
     {
         DebugLogging("[YayoEnding] :: PatchDef2 START");
         DebugLogging("# generate planet energy core recipes");
@@ -118,14 +120,13 @@ public class YayoEndingMod : Mod
                 soundWorking = SoundDef.Named("Recipe_Machining"),
                 workAmount = 1500,
                 recipeUsers =
-                    new List<ThingDef>
-                    {
-                        ThingDef.Named("CraftingSpot"),
-                        ThingDef.Named("FueledSmithy"),
-                        ThingDef.Named("ElectricSmithy"),
-                        ThingDef.Named("TableMachining"),
-                        ThingDef.Named("FabricationBench")
-                    },
+                [
+                    ThingDef.Named("CraftingSpot"),
+                    ThingDef.Named("FueledSmithy"),
+                    ThingDef.Named("ElectricSmithy"),
+                    ThingDef.Named("TableMachining"),
+                    ThingDef.Named("FabricationBench")
+                ],
                 unfinishedThingDef = ThingDef.Named("UnfinishedComponent")
             };
 
@@ -158,15 +159,9 @@ public class YayoEndingMod : Mod
             }
 
 
-            r.products = new List<ThingDefCountClass>
-            {
-                new ThingDefCountClass { thingDef = ThingDef.Named("yy_planetCore"), count = 1 }
-            };
+            r.products = [new ThingDefCountClass() { thingDef = ThingDef.Named("yy_planetCore"), count = 1 }];
 
-            r.skillRequirements = new List<SkillRequirement>
-            {
-                new SkillRequirement { skill = SkillDefOf.Crafting, minLevel = 8 }
-            };
+            r.skillRequirements = [new SkillRequirement() { skill = SkillDefOf.Crafting, minLevel = 8 }];
 
             r.workSkill = SkillDefOf.Crafting;
 
@@ -205,21 +200,17 @@ public class YayoEndingMod : Mod
 
         Widgets.Label(left, "goalBiome_title".Translate());
         // ensure buffer isn't null
-        if (goalBiomeBuffer == null)
-        {
-            goalBiomeBuffer = settings.goalBiome.ToString();
-        }
+        goalBiomeBuffer ??= settings.goalBiome.ToString();
 
         goalBiomeBuffer = Widgets.TextField(right, goalBiomeBuffer);
 
         // try parse buffer into an int; keep previous value on parse failure
-        int parsedGoal;
-        int newGoal = settings.goalBiome; // default to current
-        if (int.TryParse(goalBiomeBuffer, out parsedGoal))
+        var newGoal = settings.goalBiome; // default to current
+        if (int.TryParse(goalBiomeBuffer, out var parsedGoal))
         {
             // optionally clamp to sensible range; original HugsLib slider used 1..10 so keep that
             newGoal = Mathf.Clamp(parsedGoal, 1, 100); // allow a larger upper bound if wanted
-            // keep buffer normalized to parsed value so UI shows cleaned input
+            // to keep buffer normalized to parsed value so UI shows cleaned input
             goalBiomeBuffer = newGoal.ToString();
         }
 
@@ -233,7 +224,7 @@ public class YayoEndingMod : Mod
 
         // --- extract speed slider ---
         listing.Label("extractSpeed_title".Translate() + $": {settings.extractSpeed:F2}");
-        float newExtract = Widgets.HorizontalSlider(
+        var newExtract = Widgets.HorizontalSlider(
             listing.GetRect(22f),
             settings.extractSpeed,
             0.01f,
@@ -269,7 +260,7 @@ public class YayoEndingMod : Mod
     }
 
     // The combined implementation of patchDef() and patchDef2()
-    public void PatchDef()
+    public static void PatchDef()
     {
         DebugLogging("[YayoEnding] :: PatchDefs START");
         DebugLogging("[YayoEnding] :: PatchDef1 START");
@@ -288,14 +279,13 @@ public class YayoEndingMod : Mod
         DebugLogging(
             $"# Blacklist contains {BlacklistedBiomeNames.Count} biome names: {string.Join(", ", BlacklistedBiomeNames)}");
 
-        int countGenerated = 0;
+        var countGenerated = 0;
 
         // generate implied ThingDefs for each biome (respecting ignoreExtreme)
         foreach (var b in DefDatabase<BiomeDef>.AllDefs
-            .Where(
-                biome => !biome.impassable &&
-                    (ignoreExtreme || !biome.isExtremeBiome) &&
-                    !BlacklistedBiomeNames.Contains(biome.defName)))
+                     .Where(biome => !biome.impassable &&
+                                     (ignoreExtreme || !biome.isExtremeBiome) &&
+                                     !BlacklistedBiomeNames.Contains(biome.defName)))
         {
             DebugLogging($"# Including biome: {b.defName} ({b.label})");
 
@@ -306,7 +296,7 @@ public class YayoEndingMod : Mod
                 resourceReadoutPriority = ResourceCountPriority.Middle,
                 selectable = true,
                 altitudeLayer = AltitudeLayer.Item,
-                comps = new List<CompProperties> { new CompProperties_Forbiddable() },
+                comps = [new CompProperties_Forbiddable()],
                 alwaysHaulable = true,
                 drawGUIOverlay = true,
                 rotatable = false,
@@ -317,26 +307,26 @@ public class YayoEndingMod : Mod
                 description = string.Format("yayoEnding_energyPiece".Translate(), b.label),
 
                 graphicData =
-                    new GraphicData { texPath = "Things/Item/Resource/Gold", graphicClass = typeof(Graphic_StackCount) },
+                    new GraphicData
+                        { texPath = "Things/Item/Resource/Gold", graphicClass = typeof(Graphic_StackCount) },
 
                 soundInteract = SoundDef.Named("Silver_Drop"),
                 soundDrop = SoundDef.Named("Silver_Drop"),
                 useHitPoints = false,
-                healthAffectsPrice = false
+                healthAffectsPrice = false,
+                // statBases from silver
+                statBases = [..RimWorld.ThingDefOf.Silver.statBases],
+                thingCategories = [],
+                stackLimit = 100,
+                burnableByRecipe = false,
+                smeltable = false,
+                terrainAffordanceNeeded = TerrainAffordanceDefOf.Medium
             };
-
-            // statBases from silver
-            t.statBases = new List<StatModifier>(RimWorld.ThingDefOf.Silver.statBases);
-            t.thingCategories = new List<ThingCategoryDef>();
-            t.stackLimit = 100;
-            t.burnableByRecipe = false;
-            t.smeltable = false;
-            t.terrainAffordanceNeeded = TerrainAffordanceDefOf.Medium;
 
             // ensure custom category
             t.thingCategories.Add(ThingCategoryDef.Named("yy_gem_piece_category"));
             t.tradeability = Tradeability.None;
-            t.tradeTags = new List<string> { "yy_gem" };
+            t.tradeTags = ["yy_gem"];
 
             // save def name and register
             arGemDef.Add(t.defName);
@@ -363,10 +353,10 @@ public class YayoEndingMod : Mod
 
     // This replicates the behaviour of DefsLoaded (graphics fix)
     // The defs are created (and this is run) in the PreResolve patch
-    public void UpdateGraphics()
+    public static void UpdateGraphics()
     {
         // Update ThingDef graphics for yy_gem_*
-        int a = 0;
+        var a = 0;
         foreach (var thing in from t in DefDatabase<ThingDef>.AllDefs where t.defName.Contains("yy_gem_") select t)
         {
             var gd = new GraphicData { graphicClass = typeof(Graphic_Single), texPath = $"yy_bep{a % 15}" };

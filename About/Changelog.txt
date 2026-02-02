@@ -1,5 +1,8 @@
 # Changelog for YayosEndGame
 
+1.6.3 - Skillevel bugfix and performance optimization, thanks to Halicade
+
+
 1.6.2 - Removed HugsLib dependency, thanks to Zaljerem
 Used DeepL to update translations for ChineseSimplified, French, German, Russian
 

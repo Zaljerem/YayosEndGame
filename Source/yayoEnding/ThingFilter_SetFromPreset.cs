@@ -9,7 +9,7 @@ internal class ThingFilter_SetFromPreset
 {
     private static void Postfix(ThingFilter __instance, StorageSettingsPreset preset)
     {
-        if(preset == StorageSettingsPreset.DefaultStockpile)
+        if (preset == StorageSettingsPreset.DefaultStockpile)
         {
             __instance.SetAllow(ThingCategoryDef.Named("yy_gem_category"), true);
         }

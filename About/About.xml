@@ -85,6 +85,8 @@
 Update of Latki, YAYOs mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2260853046
 
+- From 1.6, this mod no longer needs HugsLib, thanks to Zaljerem!
+
 [img]https://img.litet.net/logos/Notice.png[/img]
 
 [table]
@@ -186,6 +188,6 @@ If you are proficient in C# and are interested, please contact me on the rimworl
 [*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
 [/list] 
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2889874629][img]https://img.shields.io/github/v/release/emipa606/YayosEndGame?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | tags:  planet teleportation,  epic journey</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.6.2</modVersion>
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2889874629][img]https://img.shields.io/github/v/release/emipa606/YayosEndGame?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | tags: planet teleportation, epic journey</description>
+  <modVersion IgnoreIfNoMatchingField="True">1.6.3</modVersion>
 </ModMetaData>
